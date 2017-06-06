@@ -142,11 +142,11 @@ class Streaming
     /**
      * Set professeurs
      *
-     * @param \HLIN601\MOOCBundle\Entity\Professeur $professeurs
+     * @param \HLIN601\UserBundle\Entity\Professeur $professeurs
      *
      * @return Streaming
      */
-    public function setProfesseurs(\HLIN601\MOOCBundle\Entity\Professeur $professeurs)
+    public function setProfesseurs(\HLIN601\UserBundle\Entity\Professeur $professeurs)
     {
         $this->professeurs = $professeurs;
 
@@ -156,7 +156,7 @@ class Streaming
     /**
      * Get professeurs
      *
-     * @return \HLIN601\MOOCBundle\Entity\Professeur
+     * @return \HLIN601\UserBundle\Entity\Professeur
      */
     public function getProfesseurs()
     {
