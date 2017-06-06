@@ -1,0 +1,23 @@
+{% extends "HLIN601MOOCBundle:Cours:qcm.html.twig" %}
+
+{% block title %}
+    {{ parent() }}: Edition
+
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+    <div id="qcm">
+        <h1>Edition de QCM</h1>
+            {{ form_start(edit_form) }}
+                {{ form_row(edit_form.intitule) }}
+                {{ form_row(edit_form.dateDebut) }}
+                {{ form_row(edit_form.dateFin) }}
+                {{ form_widget(edit_form.questions) }}              
+                    <div class="btn-group" role="group" aria-label="">
+                        <a class="btn btn-default" href="{{ path('qcm_index', { 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type }) }}">Retourner à la liste</a>
+                        <input class="btn btn-primary" type="submit" value="Valider" />
+                        <a class="btn btn-info" href="{{ path('qcm_show', { 'id': qcm.id, 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type  }) }}">Visionner</a>                        
+                    </div>
+            {{ form_end(edit_form) }}
+    </div>
+{% endblock %}

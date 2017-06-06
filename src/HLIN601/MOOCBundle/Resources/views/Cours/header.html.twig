@@ -1,0 +1,31 @@
+<nav id="header" class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {% if classe is defined %}
+          <a class="navbar-brand" href="{{ path('hlin601_mooc_classe',{'classeSlug': classe.slug }) }}">
+            <img alt="Brand" src="{{ asset('bundles/hlin601mooc/img/logo_schoolmooc.png') }}">
+          </a>
+        {% else %}
+          <a class="navbar-brand" href="{{ path('hlin601_home_accueil') }}">
+            <img alt="Brand" src="{{ asset('bundles/hlin601mooc/img/logo_schoolmooc.png') }}">
+          </a>
+        {% endif %}
+
+        <div id="myaccount" class="btn-group pull-right">
+          {{ mgilet_notification_render({ 'display': 'dropdown', 'seen': false }) }}<a href="{{ path('fos_user_profile_show') }}" type="button" class="btn btn-default navbar-btn"><strong>Mon Compte</strong></a><button type="button" class="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    		    <span class="caret"></span>
+        	  	<span class="sr-only">Toggle Dropdown</span>		  
+    		  </button>
+    		  <ul class="dropdown-menu">
+    		    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+    		  </ul>
+    	  </div>
+      {% else %}
+        <a class="navbar-brand" href="{{ path('hlin601_home_accueil') }}">
+          <img alt="Brand" src="{{ asset('bundles/hlin601mooc/img/logo_schoolmooc.png') }}">
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

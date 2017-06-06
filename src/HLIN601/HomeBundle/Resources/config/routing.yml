@@ -1,0 +1,4 @@
+hlin601_home_accueil:
+    path:     /
+    defaults:
+        _controller: HLIN601HomeBundle:Home:accueil

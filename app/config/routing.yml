@@ -1,0 +1,26 @@
+hlin601_home:
+    resource: "@HLIN601HomeBundle/Resources/config/routing.yml"
+    prefix:   /schoolmooc
+
+hlin601_mooc_qcm:
+    resource: "@HLIN601MOOCBundle/Controller/QcmController.php"
+    type:     annotation
+
+hlin601_mooc:
+    resource: "@HLIN601MOOCBundle/Resources/config/routing.yml"
+    prefix:   /schoolmooc    
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+etudiant_registration:
+    path:  /register/etudiant
+    defaults: { _controller: HLIN601UserBundle:RegistrationEtudiant:register }
+
+professeur_registration:
+    path:  /register/professeur
+    defaults: { _controller: HLIN601UserBundle:RegistrationProfesseur:register }
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

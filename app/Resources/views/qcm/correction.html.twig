@@ -1,0 +1,28 @@
+{% extends "HLIN601MOOCBundle:Cours:qcm.html.twig" %}
+
+{% block title %}
+    {{ parent() }}: Correction
+
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+    <div id="qcm">
+        <h1>Correction du QCM</h1>
+        <div class="btn-group" role="group" aria-label="">
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Voir la correction</a>
+          <a class="btn btn-default" href="{{ path('qcm_index', { 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type }) }}">Retourner à la liste</a>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-block">
+            {{ form_start(faire_form) }}
+            {% for form in faire_form %}
+              {% for question in form %}
+                {{ form_row(question) }}
+              {% endfor %}
+            {% endfor %}
+            {{ form_end(faire_form) }}
+          </div>
+        </div>
+        <h2>Score: {{ note.valeur }} / {{ 20 * note.coef }}</h2>
+    </div>
+{% endblock %}

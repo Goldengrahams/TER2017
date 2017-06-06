@@ -1,0 +1,36 @@
+{% extends "HLIN601MOOCBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ classe.intitule }}: Cours vidéos, fiche de cours, QCM, Exercices, Méthodologie:
+{% endblock %}
+
+{% block hlin601mooc_body %}
+	
+	{% if matiere is defined %}
+		<script> window.onload = function () { openNav('{{ matiere.code }}'); } </script>
+	{% endif %}
+
+	{% if not is_granted("ROLE_ADMIN") %}
+		<div id="btn-matieres">
+			<h2> Vos Matieres </h2>
+
+			<hr>
+
+			{% for classes in listeClasses %}			
+				<h3>{{ classes }}<h1>
+					{% for matieres in user.matieres %}
+						{% if (matieres.classe == classes) %}
+							{% if classes == classe %}
+								<span onclick="openNav('{{ matieres.code }}')">
+									<a type="button" class="btn btn-primary btn-matiere"> {{ matieres.code }}</a>
+								</span>
+							{% else %}
+								<a class="btn btn-primary btn-matiere" href="{{ path('hlin601_mooc_matiere', {'classeSlug': classes.slug,'matiereSlug': matieres.code}) }}">{{matieres.code}}</a>
+							{% endif %}
+						{% endif %}						
+					{% endfor %}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,6 @@
+<div id="myMask" class="maskmenu">
+	<p>Licence</p>
+	{% for class in listeClasses %}
+		<a href="{{ path('hlin601_mooc_classe', {'classeSlug': class.slug}) }}">{{class.intitule}}</a>
+	{% endfor %}
+</div>

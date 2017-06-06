@@ -1,0 +1,16 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block title %} {{ 'registration.confirmed_title'|trans }} {% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+	<div id="confirmation">
+	    <p>{{ 'registration.confirmed'|trans({'%username%': user.prenom}) }}</p>
+	    {% if is_granted('ROLE_ADMIN') %}
+	    	<p><a class="btn btn-default" href="{{ path('fos_user_profile_show') }}">{{ 'registration.back'|trans }}</a></p>
+	    {% else %}
+	    	<p><a class="btn btn-default" href="{{ path('hlin601_mooc_classe',{'classeSlug': 'licence-1-informatique' }) }}">{{ 'registration.continue'|trans }}</a></p>
+	    {% endif %}
+	</div>
+{% endblock fos_user_content %}

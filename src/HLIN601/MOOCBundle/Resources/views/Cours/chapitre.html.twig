@@ -1,0 +1,58 @@
+{% extends "HLIN601MOOCBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ chapitre.intitule }}
+{% endblock %}
+
+{% block hlin601mooc_body %}
+	{{ render(controller("HLIN601MOOCBundle:Cours:matiere", {'classe':classe,'matiere':matiere})) }}
+	<div id="btn-nav">
+		<div id="btn-switch">
+			<span id="openslide" onclick="openNav('{{ matiere.code }}')">
+				<a id="back" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span>Programme</a>
+			</span>
+
+			{% if type == 'cours-video' %}
+				<a type="button" class="btn btn-default btn-circle btn-lg">
+			{% else %}
+				<a type="button" class="btn btn-default btn-circle btn" href="{{ path('hlin601_mooc_chapitre', {'classeSlug': classe.slug, 'matiereSlug': matiere.slug,'chapitreSlug':chapitre.slug, 'type':'cours-video'}) }}">
+			{% endif %}
+				<img src="{{ asset('bundles/hlin601mooc/img/cours_video_plein.svg') }}">
+				<p>Cours Vidéo</p>
+			</a>
+
+			{% if type == 'fiche-de-cours' %}
+				<a type="button" class="btn btn-default btn-circle btn-lg">
+			{% else %}
+				<a type="button" class="btn btn-default btn-circle btn" href="{{ path('hlin601_mooc_chapitre', {'classeSlug': classe.slug, 'matiereSlug': matiere.slug,'chapitreSlug':chapitre.slug, 'type':'fiche-de-cours'}) }}">
+			{% endif %}
+				<img src="{{ asset('bundles/hlin601mooc/img/cours_ecrit_plein.svg') }}">
+				<p>Fiche de cours</p>
+			</a>
+
+			{% if type == 'qcm' %}
+				<a type="button" class="btn btn-default btn-circle btn-lg">
+			{% else %}
+				<a type="button" class="btn btn-default btn-circle btn" href="{{ path('hlin601_mooc_chapitre', {'classeSlug': classe.slug, 'matiereSlug': matiere.slug,'chapitreSlug':chapitre.slug, 'type':'qcm'}) }}">
+			{% endif %}
+				<img src="{{ asset('bundles/hlin601mooc/img/quiz_plein.svg') }}">
+				<p>QCM</p>
+			</a>
+
+			{% if type == 'streaming' %}
+				<a type="button" class="btn btn-default btn-circle btn-lg">
+			{% else %}
+				<a type="button" class="btn btn-default btn-circle btn" href="{{ path('hlin601_mooc_chapitre', {'classeSlug': classe.slug, 'matiereSlug': matiere.slug,'chapitreSlug':chapitre.slug, 'type':'streaming'}) }}">
+			{% endif %}
+				<img src="{{ asset('bundles/hlin601mooc/img/streaming.png') }}">
+				<p>Streaming</p>
+			</a>
+
+			
+		</div>
+	</div>
+
+	{% block hlin601moocchapitre_body %}
+	{% endblock %}
+
+{% endblock %}

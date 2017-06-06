@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <p>{{ 'profile.show.first_name'|trans }}: {{ user.prenom }}</p>
+    <p>{{ 'profile.show.last_name'|trans }}: {{ user.nom }}</p>
+    {% if not user.dateExpiration is null %}
+        <p>Expiration du compte: {{ user.dateExpiration|date("d/m/Y") }}</p>
+    {% endif %}
+    
+    {% if user.matieres is defined %}
+        <select>
+            <option>{{ 'profile.show.subjects'|trans }}</option>
+            {% for classe in listeClasses %}
+                <optgroup label="{{ classe }}">
+                    {% for matiere in user.matieres %}
+                        {% if matiere.getClasse() == classe %}
+                                <option disabled>{{ matiere }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </optgroup>
+            {% endfor %}
+        </select>
+	{% endif %}
+    <br/>
+    <div class="btn-group" role="group" aria-label="">
+        <a href="{{ path('fos_user_profile_edit') }}" type="button" class="btn btn-default">{{ 'profile.edit.submit'|trans }}</a>
+        <a href="{{ path('fos_user_change_password') }}" role="button" class="btn btn-default">{{ 'change_password.submit'|trans }}</a>
+        <a id="inscription" href="{{ path('professeur_registration') }}" role="button" class="btn btn-default">Inscrire un professeur</a>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{% extends 'HLIN601MOOCBundle:Cours:qcm.html.twig' %}
+
+{% form_theme form _self %}
+
+{%- block collection_widget %}
+    <div class="questions">
+        {% if prototype is defined %}
+            {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) -%}
+        {% endif %}
+        {{ block('form_widget') }}
+    </div>
+{%- endblock collection_widget -%}
+
+{% block title %}
+    {{ parent() }}: Création
+
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+    <div id="qcm">
+        <h1>Création de QCM</h1>
+
+        {{ form_start(form) }}
+            {{ form_row(form.intitule) }}
+            {{ form_row(form.dateDebut) }}
+            {{ form_row(form.dateFin) }}
+            {{ form_widget(form.questions)}}
+            <div class="btn-group" role="group" aria-label="">
+                <a class="btn btn-default" href="{{ path('qcm_index', { 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type }) }}">Retourner à la liste</a>
+                <input class="btn btn-success   " type="submit" value="Créer" />
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ asset('bundles/hlin601mooc/css/style.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('bundles/hlin601mooc/css/dropzone.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('bundles/hlin601home/css/home.css') }}"/>
+      <link rel="stylesheet" href="{{ asset('bundles/mgiletnotification/css/mgilet_notification.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hlin601mooc/css/stream.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hlin601mooc/fonts/font-awesome-4.3.0/css/font-awesome.min.css') }}" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hlin601mooc/css/normalize.css') }}" />
+    {% endblock %}
+  </head>
+
+  <body>
+    {{ include("HLIN601MOOCBundle:Cours:header.html.twig") }}
+
+    {% block body %}
+    {% endblock %}
+    {% block javascripts %}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="{{ asset('bundles/hlin601mooc/js/slide.js') }}"></script>
+      <script src="{{ asset('bundles/hlin601mooc/js/mask.js') }}"></script>
+      <script src="{{ asset('bundles/hlin601mooc/js/upload.js') }}"></script>
+      <script src="{{ asset('bundles/hlin601mooc/js/dropzone.js') }}"></script>
+      <script src="{{ asset('bundles/hlin601mooc/js/addQuestionReponse.js') }}"></script>
+      <script src="{{ asset('bundles/hlin601user/js/formules.js') }}"></script>
+      <script type="application/javascript" src="{{ asset('bundles/mgiletnotification/js/ajax-notification.js') }}"></script>
+      <script src="js/modernizr.custom.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+      <script src="{{ asset('bundles/hlin601user/js/webrtc.js') }}"></script>
+      <script src="{{ asset('bundles/hlin601user/js/rtc-controller.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "HLIN601MOOCBundle:Cours:qcm.html.twig" %}
+
+{% block title %}
+    {{ parent() }}: Faire
+
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+    <div id="qcm">
+        <h1>Faire le QCM</h1>
+            {{ form_start(faire_form) }}
+            {% for question in faire_form %}
+              {% for reponse in question %}
+                {{ form_row(reponse) }}
+              {% endfor %}
+            {% endfor %}
+            <div class="btn-group" role="group" aria-label="">
+                <a class="btn btn-default" href="{{ path('qcm_index', { 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type }) }}">Retourner à la liste</a>
+                <input class="btn btn-primary" type="submit" value="Valider" />
+            </div>
+
+            {{ form_end(faire_form) }}
+    </div>
+{% endblock %}

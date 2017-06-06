@@ -1,0 +1,34 @@
+hlin601_mooc_compte:
+    path:     /mon-compte
+    defaults:
+        _controller: HLIN601MOOCBundle:Cours:compte
+
+upload_file:
+    path:     /upload/{chapitreSlug}/{type}
+    defaults:
+        _controller: HLIN601MOOCBundle:Cours:UploadFile
+
+remove_file:
+    path:     /remove/{chapitreSlug}/{type}
+    defaults:
+        _controller: HLIN601MOOCBundle:Cours:RemoveFile
+
+activer:
+    path: /activer/{chapitreSlug}/{type}
+    defaults:
+        _controller: HLIN601MOOCBundle:Cours:activer
+
+hlin601_mooc_classe:
+    path:     /{classeSlug}
+    defaults:
+        _controller: HLIN601MOOCBundle:Cours:classe
+
+hlin601_mooc_matiere:
+    path:     /{classeSlug}/{matiereSlug}
+    defaults:
+        _controller: HLIN601MOOCBundle:Cours:classeMatiere
+
+hlin601_mooc_chapitre:
+    path:     /{classeSlug}/{matiereSlug}/{chapitreSlug}/{type}
+    defaults:
+        _controller: HLIN601MOOCBundle:Qcm:index

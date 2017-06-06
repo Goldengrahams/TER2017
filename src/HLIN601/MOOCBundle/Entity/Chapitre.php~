@@ -1,0 +1,52 @@
+<?php
+
+namespace HLIN601\MOOCBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Chapitre
+ *
+ * @ORM\Table(name="chapitre")
+ * @ORM\Entity(repositoryClass="HLIN601\MOOCBundle\Repository\ChapitreRepository")
+ */
+class Chapitre
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intitule", type="string", length=255)
+     */
+    private $intitule;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="HLIN601\MOOCBundle\Entity\Matiere", cascade={"persist"},inversedBy="chapitres")
+     */
+    private $matiere;
+
+    /**
+     * @ORM\OneToOne(targetEntity="HLIN601\MOOCBundle\Entity\Cours", cascade={"persist"})
+     */
+    private $cours;
+   
+
+   
+   
+    
+}

@@ -1,0 +1,25 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+  {{ render(controller("HLIN601MOOCBundle:Cours:choixclasse")) }}
+	<div class="row">
+      <div id="menu" class="col-md-2">
+        <ul id="menu-header" class="nav nav-pills nav-stacked">
+
+          <li>
+      		<span id="openmask" onclick="openMaskMenu()">
+        		<button type="button" class="choix btn btn-primary btn-block">{{classe.intitule}}</button>
+        	</span>
+    </li>
+        </ul>
+        {{ render(controller("HLIN601MOOCBundle:Cours:menu", {'classe':classe})) }}
+      </div>
+      <div id="content" class="col-md-10">
+      {% block hlin601mooc_body %}
+  		{% endblock %}
+      </div>
+    </div>
+
+{% endblock %}

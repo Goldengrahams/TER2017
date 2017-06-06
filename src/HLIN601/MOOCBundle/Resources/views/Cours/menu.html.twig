@@ -1,0 +1,12 @@
+<ul class="nav nav-pills nav-stacked" style='background-color:#555053'>
+  {% for matiere in listeMatieres %}
+  	{{ render(controller("HLIN601MOOCBundle:Cours:matiere", {'classe':classe,'matiere':matiere})) }}
+    <li>
+      <span id="openslide" onclick="openNav('{{ matiere.code }}')">
+        <button type="button" class="choix btn btn-primary btn-block">{{ matiere.code }}
+        	<span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+      </span>
+    </li>
+  {% endfor %}
+</ul>

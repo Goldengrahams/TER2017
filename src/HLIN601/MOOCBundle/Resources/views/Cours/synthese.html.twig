@@ -1,0 +1,18 @@
+{% extends "HLIN601MOOCBundle:Cours:chapitre.html.twig" %}
+
+{% block title %}
+	{{ parent() }}: Fiche de révision
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+
+	{% if cours %}
+		<object id="FichesCours" data="{{ asset(cours.getWebPath()) }}" type="application/pdf" height="100%" width="100%">
+			<iframe src="{{ asset(cours.getAbsolutePath()) }}" style="border: none;" height="100%" width="100%">
+				This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset(cours.getAbsolutePath()) }}">Download PDF</a>
+			</iframe>
+		</object>
+	{% else %}
+		{{ include("HLIN601MOOCBundle:Cours:uploader.html.twig") }}
+	{% endif %}
+{% endblock %}

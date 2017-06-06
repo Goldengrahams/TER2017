@@ -1,0 +1,53 @@
+{% extends "HLIN601MOOCBundle:Cours:qcm.html.twig" %}
+
+{% block title %}
+    {{ parent() }}: Liste
+
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+    <div id="qcm">
+        <h1>Liste des QCM</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Professeur</th>
+                    <th>Intitule</th>
+                    <th>Nombre de questions</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for qcm in qcms %}
+                <tr>
+                    <td>{% if qcm.professeur %}{{ qcm.professeur.getPrenom() }} {{ qcm.professeur.getNom() }}{% endif %}</td>
+                    <td>{% if qcm.intitule %}{{ qcm.intitule }}{% endif %}</td>
+                    <td>{% if qcm.questions %}{{ qcm.questions.count }}{% endif %}</td>
+                    <td>{% if qcm.dateDebut %}Le {{ qcm.dateDebut|date('d/m/Y \\à\\ H') }}h{% endif %}</td>
+                    <td>{% if qcm.dateFin %}Le {{ qcm.dateFin|date('d/m/Y \\à\\ H') }}h{% endif %}</td>
+                    <td>
+                        {% if (is_granted('ROLE_PROF')) and (user == qcm.professeur) or (is_granted('ROLE_ADMIN')) %}
+                            <div class="btn-group" role="group" aria-label="">
+                                <a class="btn btn-default" href="{{ path('qcm_show', { 'id': qcm.id, 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type  }) }}">Visionner</a>
+                                <a class="btn btn-primary" href="{{ path('qcm_edit', { 'id': qcm.id, 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type  }) }}">Editer</a>
+                            </div>
+                        {% elseif is_granted('ROLE_ETU') %}
+                            <a class="btn btn-default" href="{{ path('qcm_faire', { 'id': qcm.id, 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type  }) }}">Faire ce QCM</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if (is_granted('ROLE_PROF')) and not (is_granted('ROLE_ADMIN')) and (matiere in user.matieres) %}
+            <ul>
+                <li>
+                    <a class="btn btn-success" href="{{ path('qcm_new', { 'classeSlug': classe.slug, 'matiereSlug': matiere.slug, 'chapitreSlug': chapitre.slug, 'type': type }) }}">Créer un nouveau QCM</a>
+                </li>
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

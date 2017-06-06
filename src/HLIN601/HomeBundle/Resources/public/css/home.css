@@ -1,0 +1,60 @@
+/* CSS de l'accueil */
+
+#b {
+  background-image:url( "{{ asset('bundles/hlin601mooc/img/fond.jpg') }}");
+  background-size: cover;
+}
+
+#haut{
+	background-color: #1abc9c; /* Green */
+}
+
+.carousel.slide, .carousel-inner, .item{
+	height: 400px;
+}
+
+.item img{
+	width: 100%;
+}
+
+.jumbotron { 
+    background-color: #1abc9c; /* Green */
+    color: white;
+}
+.bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: white;
+}
+.bg-3 { 
+
+    color: #555555;
+}
+
+#carousel-891136
+{
+  background-color:   #ff4b61  ;
+}
+
+#footer {
+background-image: url( "{{ asset('bundles/hlin601mooc/img/fond.jpg') }}");
+background-size: cover;
+height: 28px;
+opacity: 0.7;
+}
+
+#titre{
+  background-image: url( "{{ asset('bundles/hlin601mooc/img/fond.jpg') }}");
+  background-size: cover;
+}
+
+.lead{
+  margin-top: -50px;
+  padding: 10px;
+  color: white;
+  text-shadow: 0px 0px 7px #000000
+}
+
+#a{
+  color: white;
+  text-shadow: 0px 0px 7px #000000
+}

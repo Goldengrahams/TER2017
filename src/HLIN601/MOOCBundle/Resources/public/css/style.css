@@ -1,0 +1,435 @@
+body{
+	background-image: url("../img/schoolmouv_hat_background.png");
+	height: 100%;
+	
+}
+
+html{
+	height: 100%;
+}
+
+.row{
+	height: calc(100% - 65px);
+}
+
+#content{
+	height: inherit;
+	width: calc(100% - 225px);
+}
+
+#CoursVideo, #FichesCours{
+	height: inherit;
+	width: 100%;
+}
+
+/* CSS de confirmation d'inscription */
+
+#confirmation{
+  text-align: center;
+}
+
+
+/* CSS du header */
+
+#header{
+	box-shadow: 0 1px 15px 0 #888;
+	z-index: 3;
+}
+
+.navbar, .container-fluid{
+	height: 64px;
+	margin: 0px;
+}
+
+.navbar-header{
+	width: 100%;
+}
+
+.navbar-brand{
+	height: 64px;
+	padding: 6px 14px;
+}
+
+.navbar-brand img{
+	height: 50px;
+}
+
+#myaccount{
+	padding: 5px;
+	height: 50px;
+}
+
+#myaccount .navbar-btn{
+  float: none !important;
+  display: inline;
+	border-color: #CCC;
+	background-color: transparent;
+}
+
+#myaccount .btn:hover{
+	color: crimson;
+}
+
+/* CSS des notifications */
+
+.btn-default #notificationCount{
+  color: black;
+}
+
+.btn-warning #notificationDropdown{
+  color: crimson;
+}
+
+#liste_notifications{
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 20%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 15px 0 #888;
+  text-align: center;
+}
+
+/* CSS du menu */
+
+#menu, #content{
+	top: -3px;
+}
+
+#menu{
+	background-image: linear-gradient(#6c656a,#5f595d);
+	width: 210px;
+	height: 100%;
+	padding-right: 0px;
+	box-shadow: 0 0 10px 0 #707070;
+	z-index: 2;
+	overflow-y: auto;
+}
+
+#menu-header, #menu-header .choix{
+	height: 70px;
+	background-color: crimson;
+}
+
+#menu-header, #menu-header .choix:hover, #menu-header, #menu-header .choix:focus{
+	background-color: darkred;
+	color: white;
+}
+
+.choix{
+	color: white;
+	text-align: center;
+	height: 55px;
+}
+
+.choix p{
+  margin: 0;
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.choix.btn-primary{
+	background-color: #555053;
+	border: 0px;
+	z-index: 3;
+}
+
+.choix #openSlide{
+	width: 100%;
+	height: 100%;
+	z-index: 4;
+}
+
+.choix:hover{
+	background-color: #494648;
+}
+
+.choix:focus{
+	background-color: #494648;
+	color: red;
+}
+
+/* CSS du menu déroulant */
+
+#back{
+	background-color: rgba(0,0,0,.3);
+	position: absolute;
+	top: -20px;
+	border: 0;
+}
+
+#btn-switch #openslide{
+	position: absolute;
+	left: 10px;
+}
+
+/* CSS de la page classe */
+
+#btn-matieres{
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ /* The side navigation menu */
+.sidenav {
+    text-align: center;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 64px;
+    left: 195px;
+    background-color: #f5f5f5;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* Title */
+
+.sidenav p{
+  font-size: 30px;
+  text-decoration: underline;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: crimson;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+/* Menu avec masque */
+.maskmenu {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+}
+
+.maskmenu.is-active {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.maskmenu p{
+    text-decoration: none;
+    text-align: center;
+    font-size: 50px;
+    color: crimson;
+    display: block;
+    transition: 0.3s
+}
+
+.maskmenu a{
+	text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    display: block;
+    transition: 0.3s
+}
+
+.maskmenu a:hover{
+    color: crimson;
+}
+
+/* Round buttons */
+.btn-circle {
+	display: inline-block;
+	height: inherit; 
+	font-size: 13px;
+	text-align: center;
+	padding: 0 20px;
+	box-sizing: content-box;
+	border: 0;
+	background-color: transparent;
+}
+.btn-circle p{
+	margin: 0;
+	bottom: 0;
+}
+
+.btn-circle:hover{
+	background-color: transparent;
+}
+
+.btn-circle img{
+	width: 45px;
+	height: 45px;
+	border: 3px solid #fff;
+	border-radius: 50%;
+	margin-bottom: 8px
+}
+
+.btn-circle.btn-lg img{
+	transform: scale(1.4) !important;
+}
+
+.btn-circle.btn-lg {
+	font-weight: 700 !important;
+}
+
+#btn-nav{
+	height: 80px;
+}
+
+#btn-nav #btn-switch{
+	height: 71.5px;
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	margin-top: 35px;
+	text-align: center;
+}
+
+/* formulaires d'inscription/connexion */
+
+#compte{
+  height: calc(100% - 64px);
+  font-weight: 700;
+}
+
+#formulaire{
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 15px 0 #888;
+}
+
+#formulaire .form-horizontal{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#formulaire .col-sm-2{
+  width: 40%;
+  height: 34px;
+  text-align: right;
+  padding-top: 7px;
+  margin-bottom: 0;
+}
+
+#formulaire .col-sm-10{
+  width: 50%;
+}
+
+.fos_user_user_show{
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.fos_user_user_show select{
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#fos_user_registration_form_formule{
+  text-align: left;
+}
+
+/* Dropzone */
+.dropzone{
+  border: 2px dashed SteelBlue !important;
+  border-radius: 100px;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 2% 0;
+}
+
+/* QCM */
+#qcm, #qcm-show{
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 70%;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 15px 0 #888;
+  text-align: center;
+  padding-bottom: 15px;
+  overflow: auto;
+}
+
+#qcm table, #qcm-show table{
+  margin-left:auto; 
+  margin-right:auto;
+  text-align: left;
+}
+
+#qcm-show table th{
+  width: 50%;
+  text-align: right;
+}
+
+#qcm ul, #qcm-show ul{
+  list-style-type: none;
+}
+
+#qcm .form-horizontal, #qcm-show .form-horizontal{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#qcm .col-sm-2, #qcm-show .col-sm-2{
+  height: 34px;
+  text-align: right;
+  padding-top: 7px;
+  margin-bottom: 0;
+}
+
+
+#hlin601_moocbundle_qcm_questions .form-group .form-group{
+  text-align: left;
+}

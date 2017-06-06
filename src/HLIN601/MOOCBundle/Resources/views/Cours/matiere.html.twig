@@ -1,0 +1,9 @@
+<div id="{{ matiere.code }}" class="sidenav">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeNav('{{ matiere.code }}')">&times;</a>
+	<p> {{matiere.intitule}} </p>
+	{% set num = 1 %}
+	{% for chap in listeChap %}
+		<a href="{{ path('hlin601_mooc_chapitre', {'classeSlug': classe.slug, 'matiereSlug': matiere.slug,'chapitreSlug':chap.slug, 'type':'cours-video'}) }}">Chapitre {{ num }} : {{ chap.intitule }}</a>
+		{% set num = num + 1 %}
+	{% endfor %}
+</div>

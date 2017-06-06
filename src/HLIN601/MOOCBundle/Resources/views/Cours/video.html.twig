@@ -1,0 +1,26 @@
+{% extends "HLIN601MOOCBundle:Cours:chapitre.html.twig" %}
+
+{% block title %}
+	{{ parent() }}: Cours vidéo
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+	{% if video %}
+		<div class="btn-group pull-right">
+		{% if is_granted('ROLE_ADMIN') and not video.active %}
+			<a class="btn btn-default" href="{{ path('activer',{'chapitreSlug':chapitre.slug, 'type': type}) }}">activer</a>
+		{% endif %}
+		{% if is_granted('ROLE_PROF') %}
+			<a class="btn btn-default" href="{{ path('remove_file',{'chapitreSlug':chapitre.slug, 'type': type}) }}">supprimer</a>
+		{% endif %}
+		</div>
+		{% if is_granted('ROLE_PROF') or video.active %}
+			{% if not video.active %}
+				<div>Cette video est en train d'être examinée</div>
+			{% endif %}
+			<video id="CoursVideo" src="{{ asset(video.getWebPath()) }}" controls></video>
+		{% endif %}
+	{% elseif (is_granted('ROLE_PROF')) and not (is_granted('ROLE_ADMIN')) and (matiere in user.matieres) %}
+		{{ include("HLIN601MOOCBundle:Cours:uploader.html.twig") }}
+	{% endif %}
+{% endblock %}

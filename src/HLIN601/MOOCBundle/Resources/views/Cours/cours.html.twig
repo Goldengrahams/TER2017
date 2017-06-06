@@ -1,0 +1,31 @@
+{% extends "HLIN601MOOCBundle:Cours:chapitre.html.twig" %}
+
+{% block title %}
+	{{ parent() }}: Fiche de cours
+{% endblock %}
+
+{% block hlin601moocchapitre_body %}
+
+	{% if cours %}
+		<div class="btn-group pull-right">
+		{% if is_granted('ROLE_ADMIN') and not cours.active %}
+			<a class="btn btn-default" href="{{ path('activer',{'chapitreSlug':chapitre.slug, 'type': type}) }}">activer</a>
+		{% endif %}
+		{% if is_granted('ROLE_PROF') %}
+			<a class="btn btn-default" href="{{ path('remove_file',{'chapitreSlug':chapitre.slug, 'type': type}) }}">supprimer</a>
+		{% endif %}
+		</div>
+		{% if is_granted('ROLE_PROF') or cours.active %}
+			{% if not cours.active %}
+				<div>Ce cours est en train d'être examiné</div>
+			{% endif %}
+			<object id="FichesCours" data="{{ asset(cours.getWebPath()) }}" type="application/pdf" height="100%" width="100%">
+				<iframe src="{{ asset(cours.getAbsolutePath()) }}" style="border: none;" height="100%" width="100%">
+					This browser does not support PDFs. Please download the PDF to view it: <a href="{{ asset(cours.getWebPath()) }}">Download PDF</a>
+				</iframe>
+			</object>
+		{% endif %}
+	{% elseif (is_granted('ROLE_PROF')) and not (is_granted('ROLE_ADMIN')) and (matiere in user.matieres) %}
+		{{ include("HLIN601MOOCBundle:Cours:uploader.html.twig") }}
+	{% endif %}
+{% endblock %}

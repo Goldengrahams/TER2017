@@ -1,0 +1,16 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %} Inscription Professeur {% endblock %}
+
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {{ form_start(form, {'method': 'post', 'action': path('professeur_registration'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    	{{ form_row(form.email) }}
+		{{ form_row(form.nom) }}
+		{{ form_row(form.prenom) }}
+		{{ form_row(form.matieres) }}
+		{{ form_row(form.duree) }}
+		{{ form_row(form.plainPassword) }}
+	{{ form_end(form) }}
+{% endblock fos_user_content %}
